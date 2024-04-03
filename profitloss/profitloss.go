@@ -8,6 +8,7 @@ import (
 	"github.com/hsmtkk/aukabucomgo/info/symbolnamefutureget"
 	"github.com/hsmtkk/deltahedgesim/yaml/future"
 	"github.com/hsmtkk/deltahedgesim/yaml/option"
+	"github.com/hsmtkk/deltahedgesim/yaml/profitloss"
 )
 
 func CalcDisplayTotalProfitLoss(baseClient base.Client) error {
@@ -77,8 +78,18 @@ func FutureProfitLoss(baseClient base.Client) (int, error) {
 	}
 
 	profitLoss := 0
+	// 先物含み損益
 	for _, soldPrice := range futurePositions.SoldPrices {
 		profitLoss += 10 * (soldPrice - bidPrice)
 	}
+	// 実現済み損益
+	profitLosses, err := profitloss.Load()
+	if err != nil {
+		return 0, err
+	}
+	for _, pl := range profitLosses.ProfitLosses {
+		profitLoss += pl
+	}
+
 	return profitLoss, nil
 }
