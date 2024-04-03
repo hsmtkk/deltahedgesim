@@ -1,6 +1,7 @@
 package hedge
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -37,6 +38,7 @@ func run(cmd *cobra.Command, args []string) {
 			if err := hedge.Hedge(baseClient); err != nil {
 				log.Fatal(err)
 			}
+			fmt.Println()
 			time.Sleep(LOOP_INTERVAL_SECONDS * time.Second)
 		}
 
