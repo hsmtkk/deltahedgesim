@@ -8,11 +8,12 @@ import (
 )
 
 type Schema struct {
-	Symbol     string
-	SymbolName string
-	Year       int
-	Month      int
-	Quantity   int
+	Symbol      string
+	SymbolName  string
+	Year        int
+	Month       int
+	Quantity    int
+	BoughtPrice int
 }
 
 const dataPath = "data/option.yaml"

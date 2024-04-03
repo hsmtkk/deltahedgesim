@@ -68,11 +68,12 @@ func initOption(baseClient base.Client, symbol string, quantity int) error {
 		return fmt.Errorf("failed to parse %s as yyyy/mm: %w", symbolResp.DerivMonth, err)
 	}
 	data := option.Schema{
-		Symbol:     symbol,
-		SymbolName: boardResp.SymbolName,
-		Year:       date.Year(),
-		Month:      int(date.Month()),
-		Quantity:   quantity,
+		Symbol:      symbol,
+		SymbolName:  boardResp.SymbolName,
+		Year:        date.Year(),
+		Month:       int(date.Month()),
+		Quantity:    quantity,
+		BoughtPrice: int(boardResp.BidPrice),
 	}
 	if err := writeYAML(data, "data/option.yaml"); err != nil {
 		return err

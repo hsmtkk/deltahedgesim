@@ -7,6 +7,7 @@ import (
 	"github.com/hsmtkk/aukabucomgo/base"
 	"github.com/hsmtkk/aukabucomgo/info/boardget"
 	"github.com/hsmtkk/aukabucomgo/info/symbolnamefutureget"
+	pl "github.com/hsmtkk/deltahedgesim/profitloss"
 	"github.com/hsmtkk/deltahedgesim/yaml/future"
 	"github.com/hsmtkk/deltahedgesim/yaml/option"
 	"github.com/hsmtkk/deltahedgesim/yaml/profitloss"
@@ -22,7 +23,6 @@ func Hedge(baseClient base.Client) error {
 	switch direction {
 	case NO_HEDGE:
 		fmt.Println("No hedge is needed")
-		return nil
 	case BUY:
 		fmt.Println("Buy back future")
 		Buy(baseClient)
@@ -33,6 +33,10 @@ func Hedge(baseClient base.Client) error {
 
 	_, err = CalcDisplayTotalDelta(baseClient)
 	if err != nil {
+		return err
+	}
+
+	if err := pl.CalcDisplayTotalProfitLoss(baseClient); err != nil {
 		return err
 	}
 
@@ -98,7 +102,7 @@ func Buy(baseClient base.Client) (int, error) {
 		return 0, err
 	}
 
-	// Bid取得
+	// 買い戻しなので売り板にぶつける Bid取得
 	boardClient := boardget.New(baseClient)
 	boardResp, err := boardClient.BoardGet(symbolResp.Symbol, boardget.ALL_DAY)
 	if err != nil {
@@ -151,7 +155,7 @@ func Sell(baseClient base.Client) (int, error) {
 		return 0, err
 	}
 
-	// Ask取得
+	// 売りなので買い板にぶつける Ask取得
 	boardClient := boardget.New(baseClient)
 	boardResp, err := boardClient.BoardGet(symbolResp.Symbol, boardget.ALL_DAY)
 	if err != nil {
