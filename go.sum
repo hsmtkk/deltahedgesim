@@ -7,6 +7,14 @@ github.com/hsmtkk/aukabucomgo v0.0.0-20240402082821-67fa14f75246 h1:0AxAFKglB1+A
 github.com/hsmtkk/aukabucomgo v0.0.0-20240402082821-67fa14f75246/go.mod h1:YuuGDR7snS3BjGXV+jjKmVQMvHL2/nOayMW50JxkxzM=
 github.com/hsmtkk/aukabucomgo v0.0.0-20240402101406-329067e77564 h1:X+HAM4cSrjA0yXfnqTik4YMc/CGhCbccRCrYDD35QYk=
 github.com/hsmtkk/aukabucomgo v0.0.0-20240402101406-329067e77564/go.mod h1:YuuGDR7snS3BjGXV+jjKmVQMvHL2/nOayMW50JxkxzM=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240402225320-c5f54f600748 h1:fnJiCZ9x3B2X1m3OGpxPDK0bcVhRe9bi4zBdoee2Pok=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240402225320-c5f54f600748/go.mod h1:YuuGDR7snS3BjGXV+jjKmVQMvHL2/nOayMW50JxkxzM=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240402230820-2dac7b182dd4 h1:TFCSgnp6gaDWMyBVXnGK61kvam3d2a59TRCXgTwkjfk=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240402230820-2dac7b182dd4/go.mod h1:YuuGDR7snS3BjGXV+jjKmVQMvHL2/nOayMW50JxkxzM=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240402234213-6c4b1ba06e9c h1:M9CgsJeX50GSsNcvvFS+zEz2OQyYfqoa5rOiCfjEims=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240402234213-6c4b1ba06e9c/go.mod h1:YuuGDR7snS3BjGXV+jjKmVQMvHL2/nOayMW50JxkxzM=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240403002023-45138695d00f h1:Io6f0EYo1ogxwtSsTYf1r/fhBhQalaWiw95OaxR4eOY=
+github.com/hsmtkk/aukabucomgo v0.0.0-20240403002023-45138695d00f/go.mod h1:YuuGDR7snS3BjGXV+jjKmVQMvHL2/nOayMW50JxkxzM=
 github.com/inconshreveable/mousetrap v1.1.0 h1:wN+x4NVGpMsO7ErUn/mUI3vEoE6Jt13X2s0bqwp9tc8=
 github.com/inconshreveable/mousetrap v1.1.0/go.mod h1:vpF70FUmC8bwa3OWnCshd2FqLfsEA9PFc4w1p2J65bw=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
@@ -15,4 +23,5 @@ github.com/spf13/cobra v1.8.0/go.mod h1:WXLWApfZ71AjXPya3WOlMsY9yMs7YeiHhFVlvLyh
 github.com/spf13/pflag v1.0.5 h1:iy+VFUOCP1a+8yFto/drg2CJ5u0yRoB7fZw3DKv/JXA=
 github.com/spf13/pflag v1.0.5/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=

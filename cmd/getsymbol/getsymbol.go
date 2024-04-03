@@ -12,21 +12,26 @@ import (
 )
 
 var Command = &cobra.Command{
-	Use:  "getsymbol put/call yyyymm strice-price",
-	Args: cobra.ExactArgs(3),
+	Use:  "getsymbol put/call year month strice-price",
+	Args: cobra.ExactArgs(4),
 	Run:  run,
 }
 
 func run(cmd *cobra.Command, args []string) {
 	putOrCallStr := args[0]
-	month := args[1]
-	strikePriceStr := args[2]
+	year := args[1]
+	month := args[2]
+	strikePriceStr := args[3]
 
 	apiPassword := os.Getenv("API_PASSWORD")
 	if apiPassword == "" {
 		log.Fatal("env var API_PASSWORD is not defined")
 	}
 
+	yearInt, err := strconv.Atoi(year)
+	if err != nil {
+		log.Fatalf("failed to parse %s as int: %v", year, err)
+	}
 	monthInt, err := strconv.Atoi(month)
 	if err != nil {
 		log.Fatalf("failed to parse %s as int: %v", month, err)
@@ -45,7 +50,7 @@ func run(cmd *cobra.Command, args []string) {
 		log.Fatalf("failed to parse %s as int: %v", strikePriceStr, err)
 	}
 
-	symbol, symbolName, err := getSymbol(apiPassword, monthInt, putOrCall, strikePrice)
+	symbol, symbolName, err := getSymbol(apiPassword, yearInt, monthInt, putOrCall, strikePrice)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -53,13 +58,13 @@ func run(cmd *cobra.Command, args []string) {
 	fmt.Println(symbolName)
 }
 
-func getSymbol(apiPassword string, month int, putOrCall symbolnameoptionget.PutOrCall, strikePrice int) (string, string, error) {
+func getSymbol(apiPassword string, year, month int, putOrCall symbolnameoptionget.PutOrCall, strikePrice int) (string, string, error) {
 	baseClient, err := base.New(base.PRODUCTION, apiPassword)
 	if err != nil {
 		return "", "", err
 	}
 	optionClient := symbolnameoptionget.New(baseClient)
-	resp, err := optionClient.SymbolNameOptionGet(symbolnameoptionget.NK225miniop, month, putOrCall, strikePrice)
+	resp, err := optionClient.SymbolNameOptionGet(symbolnameoptionget.NK225miniop, year, month, putOrCall, strikePrice)
 	if err != nil {
 		return "", "", err
 	}
